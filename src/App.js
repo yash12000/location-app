@@ -62,6 +62,10 @@ function LocationSelector() {
       setMessage(
         `You Selected ${selectedCity}, ${selectedState}, ${selectedCountry}`
       );
+    } else if (selectedState && selectedCountry) {
+      setMessage(`You Selected ${selectedState}, ${selectedCountry}`);
+    } else if (selectedCountry) {
+      setMessage(`You Selected ${selectedCountry}`);
     } else {
       setMessage("");
     }
