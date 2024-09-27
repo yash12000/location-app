@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 function LocationSelector() {
+  // State variables to store countries, states, cities, and the selected values
   const [countries, setCountries] = useState([]);
   const [states, setStates] = useState([]);
   const [cities, setCities] = useState([]);
@@ -12,6 +13,7 @@ function LocationSelector() {
 
   const [message, setMessage] = useState("");
 
+  // Fetch all countries on initial render
   useEffect(() => {
     axios
       .get("https://crio-location-selector.onrender.com/countries")
@@ -23,6 +25,7 @@ function LocationSelector() {
       });
   }, []);
 
+  // Fetch states when a country is selected
   useEffect(() => {
     if (selectedCountry) {
       axios
@@ -41,6 +44,7 @@ function LocationSelector() {
     }
   }, [selectedCountry]);
 
+  // Fetch cities when a state is selected
   useEffect(() => {
     if (selectedState) {
       axios
@@ -57,17 +61,12 @@ function LocationSelector() {
     }
   }, [selectedState, selectedCountry]);
 
+  // Automatically display the message when a city is selected
   useEffect(() => {
     if (selectedCity) {
       setMessage(
         `You Selected ${selectedCity}, ${selectedState}, ${selectedCountry}`
       );
-    } else if (selectedState && selectedCountry) {
-      setMessage(`You Selected ${selectedState}, ${selectedCountry}`);
-    } else if (selectedCountry) {
-      setMessage(`You Selected ${selectedCountry}`);
-    } else {
-      setMessage("");
     }
   }, [selectedCity, selectedState, selectedCountry]);
 
@@ -76,6 +75,7 @@ function LocationSelector() {
       <h1>Select Location</h1>
 
       <div style={{ display: "flex", justifyContent: "center", gap: "30px" }}>
+        {/* Country Dropdown */}
         <div>
           <label style={{ marginBottom: "10px", display: "block" }}>
             Select Country:
@@ -95,6 +95,7 @@ function LocationSelector() {
           </select>
         </div>
 
+        {/* State Dropdown - Enabled only if a country is selected */}
         <div>
           <label style={{ marginBottom: "10px", display: "block" }}>
             Select State:
@@ -115,6 +116,7 @@ function LocationSelector() {
           </select>
         </div>
 
+        {/* City Dropdown - Enabled only if a state is selected */}
         <div>
           <label style={{ marginBottom: "10px", display: "block" }}>
             Select City:
@@ -136,6 +138,7 @@ function LocationSelector() {
         </div>
       </div>
 
+      {/* Message after selection */}
       {message && <h3 style={{ marginTop: "20px" }}>{message}</h3>}
     </div>
   );
