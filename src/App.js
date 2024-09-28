@@ -65,7 +65,7 @@ function LocationSelector() {
   useEffect(() => {
     if (selectedCity) {
       setMessage(
-        `You Selected ${selectedCity}, ${selectedState}, ${selectedCountry}`
+        `You selected ${selectedCity}, ${selectedState}, ${selectedCountry}`
       );
     }
   }, [selectedCity, selectedState, selectedCountry]);
@@ -136,7 +136,9 @@ function LocationSelector() {
       </div>
 
       {/* Message after selection */}
-      {message && <h3 style={{ marginTop: "20px" }}>{message}</h3>}
+      <h3 style={{ marginTop: "20px" }}>
+        {message}
+      </h3>
     </div>
   );
 }
