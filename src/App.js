@@ -78,7 +78,6 @@ function LocationSelector() {
         {/* Country Dropdown */}
         <div>
           <label style={{ marginBottom: "10px", display: "block" }}>
-            Select Country:
           </label>
           <select
             value={selectedCountry}
@@ -98,7 +97,6 @@ function LocationSelector() {
         {/* State Dropdown - Enabled only if a country is selected */}
         <div>
           <label style={{ marginBottom: "10px", display: "block" }}>
-            Select State:
           </label>
           <select
             value={selectedState}
@@ -119,7 +117,6 @@ function LocationSelector() {
         {/* City Dropdown - Enabled only if a state is selected */}
         <div>
           <label style={{ marginBottom: "10px", display: "block" }}>
-            Select City:
           </label>
           <select
             value={selectedCity}
